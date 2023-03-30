@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\BlogController;
+use App\Http\Controllers\Api\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,9 @@ Route::get('blogs/{id}', [BlogController::class,'getBlogs']);
 Route::post('create-blogs', [BlogController::class,'createBlogs']);
 Route::put('updateblogs/{id}', [BlogController::class,'updateBlog']);
 Route::delete('deleteblogs/{id}',[BlogController::class, 'deleteBlogs']);
+
+Route::post('login', [UserController::class, 'login']); 
+Route::post('register', [UserController::class, 'register']); 
+Route::group(['middleware' => 'auth:api'], function(){ 
+  Route::post('user-details', [UserController::class, 'userDetails']); 
+});
