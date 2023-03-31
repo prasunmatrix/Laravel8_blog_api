@@ -31,10 +31,18 @@ class BlogController extends Controller
     //$blogs = Blog::get()->toJson(JSON_PRETTY_PRINT);
     //return response($blogs, 200);
     $blogs = Blog::get();
-    return [
+
+    //same response as below code
+    // return [
+    //   "status" => 200,
+    //   "data" => $blogs
+    // ];
+    //same response as below code
+      
+    return response()->json([
       "status" => 200,
       "data" => $blogs
-    ]; 
+    ]); 
   }
   public function getBlogs($id)
   {
