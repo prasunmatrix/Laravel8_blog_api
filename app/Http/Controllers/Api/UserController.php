@@ -23,6 +23,7 @@ class UserController extends Controller
     if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
       $user = Auth::user();
       //Log::info($user->id);
+      //Log::debug($user->id);
       $success['token'] =  $user->createToken('MyLaravelApp')->accessToken;
       $success['userId'] = $user->id;
       
